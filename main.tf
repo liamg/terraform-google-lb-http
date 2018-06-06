@@ -60,6 +60,9 @@ resource "google_compute_ssl_certificate" "default" {
   name        = "${var.name}-certificate"
   private_key = "${var.private_key}"
   certificate = "${var.certificate}"
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "google_compute_url_map" "default" {
